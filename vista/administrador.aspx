@@ -91,5 +91,14 @@
         </asp:GridView>
         <asp:ObjectDataSource ID="ODS_pagoAdministrador" runat="server" SelectMethod="datos_pagoAdmin" TypeName="Usuarios"></asp:ObjectDataSource>
     </p>
+    <p>
+        Tipo Menu</p>
+    <p>
+        <asp:GridView ID="GridView7" runat="server">
+        </asp:GridView>
+    </p>
+    <p>
+        <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="Insertar" />
+    </p>
 </asp:Content>
 

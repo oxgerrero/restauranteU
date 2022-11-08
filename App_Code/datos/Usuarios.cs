@@ -89,6 +89,15 @@ public class Usuarios
             db.SaveChanges();
         }
     }
+    public void insertarUsuarioAdmin(USUARIO usuarios)
+    {
+        usuarios.Contraseña = Encriptar(usuarios.Contraseña);
+        using (var db = new WELFAREContext())
+        {
+            db.USUARIOs.Add(usuarios);
+            db.SaveChanges();
+        }
+    }
     public USUARIO login(string usuario, string contraseña)
     {
 
@@ -154,11 +163,47 @@ public class Usuarios
         usuarios.Contraseña = DesEncriptar(usuarios.Contraseña);
         return usuarios;
     }
+    public USUARIO datos_usuario_cc(Decimal cc)
+    {
+        USUARIO usuarios;
+        using (var db = new WELFAREContext())
+        {
+            usuarios = db.USUARIOs.Where(x => x.Identificacion == cc).FirstOrDefault();
+        }
+        usuarios.Contraseña = DesEncriptar(usuarios.Contraseña);
+        return usuarios;
+    }
+
     public USUARIO comprobar_usuario(USUARIO user)
     {
         using (var db = new WELFAREContext())
         {
             return (USUARIO)db.USUARIOs.Where(x => x.Usuario.Equals(user.Usuario)).FirstOrDefault();
+        }
+    }
+
+    public void insertarEstadoAdmin(ESTADO usuarios)
+    {
+        using (var db = new WELFAREContext())
+        {
+            db.ESTADOs.Add(usuarios);
+            db.SaveChanges();
+        }
+    }
+    public void insertarRolAdmin(ROL usuarios)
+    {
+        using (var db = new WELFAREContext())
+        {
+            db.ROLs.Add(usuarios);
+            db.SaveChanges();
+        }
+    }
+    public void insertarMenuAdmin(MENU usuarios)
+    {
+        using (var db = new WELFAREContext())
+        {
+            db.MENUs.Add(usuarios);
+            db.SaveChanges();
         }
     }
 }

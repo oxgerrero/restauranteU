@@ -41,4 +41,10 @@ public partial class vista_administrador : System.Web.UI.Page
         Session["opInsertar"] = "menu";
         Response.Redirect("insertarAdmin.aspx");
     }
+
+    protected void Button4_Click(object sender, EventArgs e)
+    {
+        Session["opInsertar"] = "tipoMenu";
+        Response.Redirect("insertarAdmin.aspx");
+    }
 }

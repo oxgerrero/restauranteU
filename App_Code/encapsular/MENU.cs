@@ -12,7 +12,7 @@ public class MENU
     public int Id_menu { get; set; }
     public DateTime Dia { get; set; }
     public string Menu { get; set; }
-    public string Tipo_menu { get; set; }
+    public int Tipo_menu { get; set; }
 
     public ICollection<RESTAURANTE> RESTAURANTEs { get; set; }
 }

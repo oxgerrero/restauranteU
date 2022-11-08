@@ -30,12 +30,52 @@
         <asp:Button ID="B_insertar" runat="server" OnClick="B_insertar_Click" Text="Insertar" />
     </asp:Panel>
     <asp:Panel ID="P_estado" runat="server">
-        estado</asp:Panel>
+        estado<br /> Descripcion
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <br />
+        <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="Insertar" />
+    </asp:Panel>
     <asp:Panel ID="P_rol" runat="server">
-        rol</asp:Panel>
+        rol<br /> Descripcion
+        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+        <br />
+        <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Insertar" />
+    </asp:Panel>
     <asp:Panel ID="P_restaurante" runat="server">
-        restaurante</asp:Panel>
+        Asistencia<br /> identificacion Usuario<asp:TextBox ID="TextBox3" runat="server" TextMode="Number"></asp:TextBox>
+        <br />
+        tipo<asp:DropDownList ID="DDL_tipoComida" runat="server">
+            <asp:ListItem Value="1">Desayuno</asp:ListItem>
+            <asp:ListItem Value="2">Almuerzo</asp:ListItem>
+            <asp:ListItem Value="3">Cena</asp:ListItem>
+        </asp:DropDownList>
+        <br />
+        <asp:Button ID="Button6" runat="server" OnClick="Button6_Click" Text="Insertar" />
+    </asp:Panel>
+    <asp:Panel ID="P_tipoMenu" runat="server">
+        Tipo menu<br />
+        tipo<asp:DropDownList ID="DropDownList1" runat="server">
+            <asp:ListItem Value="1">Desayuno</asp:ListItem>
+            <asp:ListItem Value="2">Almuerzo</asp:ListItem>
+            <asp:ListItem Value="3">Cena</asp:ListItem>
+        </asp:DropDownList>
+        <br />
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Insertar" />
+    </asp:Panel>
     <asp:Panel ID="P_menu" runat="server">
-        menu</asp:Panel>
+        menu<br /> fecha<asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+        <br />
+        tipo menu
+        <asp:DropDownList ID="DDL_tipoComida0" runat="server">
+            <asp:ListItem Value="1">Desayuno</asp:ListItem>
+            <asp:ListItem Value="2">Almuerzo</asp:ListItem>
+            <asp:ListItem Value="3">Cena</asp:ListItem>
+        </asp:DropDownList>
+        <br />
+        Menu
+        <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+        <br />
+        <asp:Button ID="Button7" runat="server" OnClick="Button7_Click" Text="Insertar" />
+    </asp:Panel>
 </asp:Content>
 
