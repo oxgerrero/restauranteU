@@ -5,8 +5,8 @@ using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-[Table("ESTUDIANTES",Schema="dbo")]
-public class ESTUDIANTES
+[Table("USUARIO",Schema="dbo")]
+public class USUARIO
 {
     [Key]
     public int Id_usuario { get; set; }

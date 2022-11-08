@@ -12,19 +12,12 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <header class="p-3 bg-dark text-white">
-            <div class="container">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="#" class="nav-link px-2 text-secondary">Inicio</a></li>
-                    </ul>
-                    <div class="text-end">
-                        <asp:Button runat="server" ID="Ingresar" class="btn btn-outline-light me-2" Text="Ingresar"></asp:Button>
-                        <asp:Button runat="server" ID="Registrarse" type="button" class="btn btn-warning" Text="Registrarse"></asp:Button>
-                    </div>
-                </div>
-            </div>
-        </header>
+        <div>ENCABEZADO</div>
+        <div>
+            MENU
+            <a href="login.aspx">Iniciar session</a>
+            <a href="registro.aspx">Registrarse</a>
+        </div>
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
