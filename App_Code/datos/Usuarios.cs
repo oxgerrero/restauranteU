@@ -6,50 +6,109 @@ using System.Web;
 
 public class Usuarios
 {
-    public List<ESTUDIANTES> datos_usuarios()
+    public List<USUARIO> datos_usuarios()
     {
-        List<ESTUDIANTES> usuarios;
+        List<USUARIO> usuarios;
         using (var db = new WELFAREContext())
         {
-            usuarios = db.ESTUDIANTESs.OrderBy(x => x.Id_usuario).ToList();
+            usuarios = db.USUARIOs.OrderBy(x => x.Id_usuario).ToList();
         }
-        foreach (ESTUDIANTES user in usuarios)
+        foreach (USUARIO user in usuarios)
         {
-            //user.Contraseña = DesEncriptar(user.Contraseña);
+            user.Contraseña = DesEncriptar(user.Contraseña);
         }
         return usuarios;
     }
-    public void insertarUsuario(ESTUDIANTES usuarios)
+    public List<USUARIO> datos_usuariosAdmin()
+    {
+        List<USUARIO> usuarios;
+        using (var db = new WELFAREContext())
+        {
+            usuarios = db.USUARIOs.OrderBy(x => x.Id_usuario).ToList();
+        }
+        foreach (USUARIO user in usuarios)
+        {
+            user.Contraseña = DesEncriptar(user.Contraseña);
+        }
+        return usuarios;
+    }
+    public List<ESTADO> datos_estadosAdmin()
+    {
+        List<ESTADO> estados;
+        using (var db = new WELFAREContext())
+        {
+            estados = db.ESTADOs.OrderBy(x => x.Id_estado).ToList();
+        }
+        return estados;
+    }
+    public List<ROL> datos_rolAdmin()
+    {
+        List<ROL> estados;
+        using (var db = new WELFAREContext())
+        {
+            estados = db.ROLs.OrderBy(x => x.Id_rol).ToList();
+        }
+        return estados;
+    }
+    public List<RESTAURANTE> datos_restauranteAdmin()
+    {
+        List<RESTAURANTE> estados;
+        using (var db = new WELFAREContext())
+        {
+            estados = db.RESTAURANTEs.OrderBy(x => x.Id_restaurante).ToList();
+        }
+        return estados;
+    }
+    public List<MENU> datos_menuAdmin()
+    {
+        List<MENU> estados;
+        using (var db = new WELFAREContext())
+        {
+            estados = db.MENUs.OrderBy(x => x.Id_menu).ToList();
+        }
+        return estados;
+    }
+    public List<PAGO> datos_pagoAdmin()
+    {
+        List<PAGO> estados;
+        using (var db = new WELFAREContext())
+        {
+            estados = db.PAGOs.OrderBy(x => x.Id_pago).ToList();
+        }
+        return estados;
+    }
+
+    public void insertarUsuario(USUARIO usuarios)
     {
         usuarios.Id_rol = 2;
         usuarios.Id_estado = 1;
-        //usuarios.Contraseña = Encriptar(usuarios.Contraseña);
+        usuarios.Contraseña = Encriptar(usuarios.Contraseña);
         using (var db = new WELFAREContext())
         {
-            db.ESTUDIANTESs.Add(usuarios);
+            db.USUARIOs.Add(usuarios);
             db.SaveChanges();
         }
     }
-    public ESTUDIANTES login(string usuario, string contraseña)
+    public USUARIO login(string usuario, string contraseña)
     {
 
-        //contraseña = Encriptar(contraseña);
+        contraseña = Encriptar(contraseña);
         using (var db = new WELFAREContext())
         {
-            ESTUDIANTES eusuario = db.ESTUDIANTESs.Where(u => u.Usuario == usuario).Where(c => c.Contraseña == contraseña).FirstOrDefault();
+            USUARIO eusuario = db.USUARIOs.Where(u => u.Usuario == usuario).Where(c => c.Contraseña == contraseña).FirstOrDefault();
             if (eusuario == null)
             {
                 return null;
             }
             else
             {
-                //eusuario.Contraseña = DesEncriptar(eusuario.Contraseña);
+                eusuario.Contraseña = DesEncriptar(eusuario.Contraseña);
                 return eusuario;
             }
 
         }
     }
-    /*public string Encriptar(string clave)
+    public string Encriptar(string clave)
     {
         string result = string.Empty;
         byte[] encryted = System.Text.Encoding.Unicode.GetBytes(clave);
@@ -73,33 +132,33 @@ public class Usuarios
             return claveE;
         }
 
-    }*/
-    public void Ac_User(ESTUDIANTES usuario)
+    }
+    public void Ac_User(USUARIO usuario)
     {
-        //usuario.Contraseña = Encriptar(usuario.Contraseña);
+        usuario.Contraseña = Encriptar(usuario.Contraseña);
         using (var db = new WELFAREContext())
         {
-            db.ESTUDIANTESs.Attach(usuario);
+            db.USUARIOs.Attach(usuario);
             var entry = db.Entry(usuario);
             entry.State = EntityState.Modified;
             db.SaveChanges();
         }
     }
-    public ESTUDIANTES datos_usuario_log(int id)
+    public USUARIO datos_usuario_log(int id)
     {
-        ESTUDIANTES usuarios;
+        USUARIO usuarios;
         using (var db = new WELFAREContext())
         {
-            usuarios = db.ESTUDIANTESs.Where(x => x.Id_usuario == id).FirstOrDefault();
+            usuarios = db.USUARIOs.Where(x => x.Id_usuario == id).FirstOrDefault();
         }
-        //usuarios.Contraseña = DesEncriptar(usuarios.Contraseña);
+        usuarios.Contraseña = DesEncriptar(usuarios.Contraseña);
         return usuarios;
     }
-    public ESTUDIANTES comprobar_usuario(ESTUDIANTES user)
+    public USUARIO comprobar_usuario(USUARIO user)
     {
         using (var db = new WELFAREContext())
         {
-            return (ESTUDIANTES)db.ESTUDIANTESs.Where(x => x.Usuario.Equals(user.Usuario)).FirstOrDefault();
+            return (USUARIO)db.USUARIOs.Where(x => x.Usuario.Equals(user.Usuario)).FirstOrDefault();
         }
     }
 }

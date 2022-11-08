@@ -10,10 +10,10 @@ public partial class vista_maestraLogin : System.Web.UI.MasterPage
     public static bool carga = true;
     protected void Page_Load(object sender, EventArgs e)
     {
-        ESTUDIANTES datos = (ESTUDIANTES)Session["usuario"];
+        USUARIO datos = (USUARIO)Session["usuario"];
         if (datos != null)
         {
-            ESTUDIANTES user = new Usuarios().login(datos.Usuario, datos.Contraseña);
+            USUARIO user = new Usuarios().login(datos.Usuario, datos.Contraseña);
             if (user == null)
             {
                 Response.Redirect("inicio.aspx");

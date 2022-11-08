@@ -12,5 +12,5 @@ public class ROL
     public int Id_rol { get; set; }
     public string Nombre { get; set; }
 
-    public ICollection<ESTUDIANTES> ESTUDIANTESs { get; set; }
+    public ICollection<USUARIO> USUARIOs { get; set; }
 }

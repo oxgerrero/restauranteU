@@ -17,6 +17,9 @@ public class USUARIO
     public string Nombre { get; set; }
     public string Usuario { get; set; }
     public string Contraseña { get; set; }
+    public Decimal Telefono { get; set; }
+    public string Correo_electronico { get; set; }
+    public Decimal Identificacion { get; set; }
     //tablas referenciadas
     public ROL ROL { get; set; }
     public ESTADO ESTADO { get; set; }

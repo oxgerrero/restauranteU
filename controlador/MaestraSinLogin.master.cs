@@ -9,10 +9,10 @@ public partial class vista_MaestraSinLogin : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        ESTUDIANTES datos = (ESTUDIANTES)Session["usuario"];
+        USUARIO datos = (USUARIO)Session["usuario"];
         if (datos != null)
         {
-            ESTUDIANTES user = new Usuarios().login(datos.Usuario, datos.Contraseña);
+            USUARIO user = new Usuarios().login(datos.Usuario, datos.Contraseña);
             if (user != null)
             {
                 Response.Redirect("inicioLogin.aspx");

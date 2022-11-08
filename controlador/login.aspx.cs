@@ -14,7 +14,7 @@ public partial class vista_login : System.Web.UI.Page
 
     protected void B_ingresar_Click(object sender, EventArgs e)
     {
-        ESTUDIANTES user = new Usuarios().login(TB_username.Text, TB_password.Text);
+        USUARIO user = new Usuarios().login(TB_username.Text, TB_password.Text);
         if (user != null)
         {
             if (user.Id_estado == 1)

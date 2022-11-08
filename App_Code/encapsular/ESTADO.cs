@@ -12,6 +12,6 @@ public class ESTADO
     public int Id_estado { get; set; }
     public string Nombre { get; set; }
 
-    public ICollection<ESTUDIANTES> ESTUDIANTESs { get; set; }
+    public ICollection<USUARIO> USUARIOs { get; set; }
     public ICollection<PAGO> PAGOs { get; set; }
 }

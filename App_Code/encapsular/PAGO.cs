@@ -11,7 +11,7 @@ public class PAGO
     [Key]
     public int Id_pago { get; set; }
 
-    [ForeignKey("ESTUDIANTES")]
+    [ForeignKey("USUARIO")]
     public int Id_estudiante { get; set; }
     public DateTime Fechas { get; set; }
     public double Cantidad { get; set; }
@@ -22,7 +22,7 @@ public class PAGO
     public string Concepto { get; set; }
 
 
-    public ESTUDIANTES ESTUDIANTES { get; set; }
+    public USUARIO USUARIO { get; set; }
 
     public ESTADO ESTADO { get; set; }
 }

@@ -18,7 +18,7 @@ public class WELFAREContext : DbContext
     public DbSet<PAGO> PAGOs { get; set; }
     public DbSet<RESTAURANTE> RESTAURANTEs { get; set; }
     public DbSet<ROL> ROLs { get; set; }
-    public DbSet<ESTUDIANTES> ESTUDIANTESs { get; set; }
+    public DbSet<USUARIO> USUARIOs { get; set; }
     public static WELFAREContext Create()
     {
         return new WELFAREContext();

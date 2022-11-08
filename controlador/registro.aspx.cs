@@ -19,12 +19,15 @@ public partial class vista_registro : System.Web.UI.Page
             Response.Write("<script>alert('Las contraseñas deben ser iguales');</script>");
             return;
         }
-        ESTUDIANTES usuario = new ESTUDIANTES();
+        USUARIO usuario = new USUARIO();
         usuario.Nombre = TB_nombre.Text;
         usuario.Usuario = TB_usuario.Text;
         usuario.Contraseña = TB_contraseña1.Text;
+        usuario.Telefono = long.Parse(TB_telefono.Text);
+        usuario.Correo_electronico = TB_correo.Text;
+        usuario.Identificacion = long.Parse(TB_identificacion.Text);
         //comprovacion de existencia
-        ESTUDIANTES usuario2 = new ESTUDIANTES();
+        USUARIO usuario2 = new USUARIO();
         usuario2.Usuario = TB_usuario.Text;
         usuario2 = new Usuarios().comprobar_usuario(usuario2);
         if ((usuario2 == null))
