@@ -1,0 +1,62 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/controlador/maestraLogin.master.cs" Inherits="vista_maestraLogin" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Restaurante</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <header>
+            <h6 class="auto-style1">
+                <a href="perfil.aspx">
+                    <asp:Label ID="L_info" runat="server"></asp:Label>
+                </a>
+                <asp:Button ID="B_salir" runat="server" Text="cerrar" OnClick="B_salir_Click" />
+            </h6>
+            <h2>Rey de las Bicicletas</h2>
+            <nav>
+                <table class="auto-style2">
+                    <tr>
+                    <td>
+
+                    </td>
+                    <td>
+
+                        &nbsp;</td>
+                    <td class="auto-style3" id="publicaciones_boton">
+                        &nbsp;</td>
+                    <td id="subasta_boton">
+                        <asp:Button ID="Button3" runat="server" Text="Catalogo" Height="35px" OnClick="Button3_Click" Visible="False"/>
+ 
+                    </td>
+                    <td>
+
+                        <asp:Button ID="B_admin" runat="server" OnClick="B_admin_Click" Text="Administrador" />
+                        </td>
+                    </tr>
+                </table>
+            </nav>
+        </header>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        <footer>
+            <p> Rey de las Bicicletas<br /> 
+                Telefono: 3112794086<br />
+                Direccion: crr 5 #3-69<br />
+                Correo: dg1342732@gmail.com<br />
+                <a href="http://www.fb.com/profile.php?">Facebook</a>&nbsp;&nbsp;
+                <a href="#">Whatsapp</a>&nbsp;&nbsp;
+                <a href="#">Instagram</a>
+            </p>
+        </footer>
+    </div>
+    </form>
+</body>
+</html>
