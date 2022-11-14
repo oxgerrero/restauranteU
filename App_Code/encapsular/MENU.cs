@@ -12,7 +12,10 @@ public class MENU
     public int Id_menu { get; set; }
     public DateTime Dia { get; set; }
     public string Menu { get; set; }
-    public int Tipo_menu { get; set; }
+    [ForeignKey("TIPO")]
+    public int id_Tipo { get; set; }
+
+    public TIPO TIPO { get; set; }
 
     public ICollection<RESTAURANTE> RESTAURANTEs { get; set; }
 }

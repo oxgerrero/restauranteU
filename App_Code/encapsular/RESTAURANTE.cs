@@ -20,4 +20,6 @@ public class RESTAURANTE
     //tablas referenciadas
     public MENU MENU { get; set; }
     public USUARIO USUARIO { get; set; }
+
+    public ICollection<ASISTENCIA> ASISTENCIAs { get; set; }
 }

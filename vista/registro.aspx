@@ -4,30 +4,41 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <p>
-    Nombre:<asp:TextBox ID="TB_nombre" runat="server"></asp:TextBox>
+    Nombre:</p>
+    <p>
+        <asp:TextBox ID="TB_nombre" runat="server" Width="190px"></asp:TextBox>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 <p>
-    Usuario:<asp:TextBox ID="TB_usuario" runat="server"></asp:TextBox>
-</p>
+    Usuario:</p>
+    <asp:TextBox ID="TB_usuario" runat="server" Width="190px"></asp:TextBox>
 <p>
-    contraseña:<asp:TextBox ID="TB_contraseña1" runat="server" TextMode="Password"></asp:TextBox>
-</p>
+    Contraseña:</p>
 <p>
-    confirmar contraseña:<asp:TextBox ID="TB_contraseña2" runat="server" TextMode="Password"></asp:TextBox>
+    <asp:TextBox ID="TB_contraseña1" runat="server" TextMode="Password" Width="190px"></asp:TextBox>
 </p>
     <p>
-        telefono <asp:TextBox ID="TB_telefono" runat="server" TextMode="Phone"></asp:TextBox>
+        Confirmar Contraseña:</p>
+    <p>
+        <asp:TextBox ID="TB_contraseña2" runat="server" TextMode="Password" Width="190px"></asp:TextBox>
 </p>
     <p>
-        correo <asp:TextBox ID="TB_correo" runat="server" TextMode="Email"></asp:TextBox>
+        Telefono:</p>
+    <p>
+        <asp:TextBox ID="TB_telefono" runat="server" TextMode="Phone" Width="190px"></asp:TextBox>
 </p>
     <p>
-        identificacion <asp:TextBox ID="TB_identificacion" runat="server"></asp:TextBox>
+        Correo:</p>
+    <p>
+        <asp:TextBox ID="TB_correo" runat="server" TextMode="Email" Width="190px"></asp:TextBox>
 </p>
     <p>
-        &nbsp;</p>
-<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Registrarse" />
+        Identificacion:</p>
+    <p>
+        <asp:TextBox ID="TB_identificacion" runat="server" Width="190px"></asp:TextBox>
+    </p>
 <p>
-    &nbsp;</p>
+<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Registrarse" style="margin-left: 42px" Width="103px" />
+    </p>
 </asp:Content>
 

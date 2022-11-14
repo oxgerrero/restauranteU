@@ -1,0 +1,26 @@
+SET IDENTITY_INSERT [dbo].[ESTADO] ON 
+GO
+INSERT [dbo].[ESTADO] ([id_estado], [nombre]) VALUES (1, N'Activo    ')
+GO
+INSERT [dbo].[ESTADO] ([id_estado], [nombre]) VALUES (2, N'Inactivo  ')
+GO
+SET IDENTITY_INSERT [dbo].[ESTADO] OFF
+GO
+SET IDENTITY_INSERT [dbo].[ROL] ON 
+GO
+INSERT [dbo].[ROL] ([id_rol], [nombre]) VALUES (1, N'Administrador                                                                   ')
+GO
+INSERT [dbo].[ROL] ([id_rol], [nombre]) VALUES (2, N'Estudiante                                                                      ')
+GO
+INSERT [dbo].[ROL] ([id_rol], [nombre]) VALUES (3, N'Nuevo                                                                           ')
+GO
+SET IDENTITY_INSERT [dbo].[ROL] OFF
+GO
+SET IDENTITY_INSERT [dbo].[USUARIO] ON 
+GO
+INSERT [dbo].[USUARIO] ([id_usuario], [id_estado], [id_rol], [nombre], [usuario], [contraseña], [telefono], [correo_electronico], [identificacion]) VALUES (1, 1, 2, N'Paula                                                                           ', N'paula                                                                           ', N'cABhAHUAbABhAA==                                  ', CAST(3232323232 AS Numeric(18, 0)), N'dadsa@gmail.com                                   ', CAST(1234432156 AS Numeric(18, 0)))
+GO
+INSERT [dbo].[USUARIO] ([id_usuario], [id_estado], [id_rol], [nombre], [usuario], [contraseña], [telefono], [correo_electronico], [identificacion]) VALUES (2, 1, 1, N'Maria                                                                           ', N'maria                                                                           ', N'bQBhAHIAaQBhAA==                                  ', CAST(3456765435 AS Numeric(18, 0)), N'gtyt@gmail.com                                    ', CAST(1234432789 AS Numeric(18, 0)))
+GO
+SET IDENTITY_INSERT [dbo].[USUARIO] OFF
+GO

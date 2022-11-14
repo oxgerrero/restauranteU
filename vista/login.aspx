@@ -4,17 +4,20 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <p>
-        Usuario</p>
+        Usuario:</p>
     <p>
         <asp:TextBox ID="TB_username" runat="server"></asp:TextBox>
     </p>
     <p>
-        Contraseña</p>
+        Contraseña:</p>
     <p>
         <asp:TextBox ID="TB_password" runat="server" TextMode="Password"></asp:TextBox>
     </p>
     <p>
         <asp:Button ID="B_ingresar" runat="server" OnClick="B_ingresar_Click" Text="Ingresar" />
+    </p>
+    <p>
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Recuperar Contraseña" Width="216px" />
     </p>
 </asp:Content>
 

@@ -13,33 +13,37 @@ public partial class vista_insertarAdmin : System.Web.UI.Page
         if (opcion.Equals("usuario")){
             P_usuario.Visible = true;
             P_rol.Visible = false;
-            P_restaurante.Visible = false;
+            P_Asistencia.Visible = false;
             P_menu.Visible = false;
             P_estado.Visible = false;
             P_tipoMenu.Visible = false;
+            Panel1.Visible = false;
         }
         if (opcion.Equals("estado")){
             P_usuario.Visible = false;
             P_rol.Visible = false;
-            P_restaurante.Visible = false;
+            P_Asistencia.Visible = false;
             P_menu.Visible = false;
             P_estado.Visible = true;
+            Panel1.Visible = false;
             P_tipoMenu.Visible = false;
         }
         if (opcion.Equals("rol"))
         {
             P_usuario.Visible = false;
             P_rol.Visible = true;
-            P_restaurante.Visible = false;
+            P_Asistencia.Visible = false;
             P_menu.Visible = false;
             P_estado.Visible = false;
+            Panel1.Visible = false;
             P_tipoMenu.Visible = false;
         }
         if (opcion.Equals("restaurante"))
         {
             P_usuario.Visible = false;
             P_rol.Visible = false;
-            P_restaurante.Visible = true;
+            Panel1.Visible = true;
+            P_Asistencia.Visible = false;
             P_menu.Visible = false;
             P_estado.Visible = false;
             P_tipoMenu.Visible = false;
@@ -47,8 +51,9 @@ public partial class vista_insertarAdmin : System.Web.UI.Page
         if (opcion.Equals("menu"))
         {
             P_usuario.Visible = false;
+            Panel1.Visible = false;
             P_rol.Visible = false;
-            P_restaurante.Visible = false;
+            P_Asistencia.Visible = false;
             P_menu.Visible = true;
             P_estado.Visible = false;
             P_tipoMenu.Visible = false;
@@ -57,10 +62,21 @@ public partial class vista_insertarAdmin : System.Web.UI.Page
         {
             P_usuario.Visible = false;
             P_rol.Visible = false;
-            P_restaurante.Visible = false;
+            P_Asistencia.Visible = false;
+            Panel1.Visible = false;
             P_menu.Visible = false;
             P_estado.Visible = false;
             P_tipoMenu.Visible = true;
+        }
+        if (opcion.Equals("asistencia"))
+        {
+            P_usuario.Visible = false;
+            P_rol.Visible = false;
+            Panel1.Visible = false;
+            P_Asistencia.Visible = true;
+            P_menu.Visible = false;
+            P_estado.Visible = false;
+            P_tipoMenu.Visible = false;
         }
     }
 
@@ -103,7 +119,13 @@ public partial class vista_insertarAdmin : System.Web.UI.Page
         USUARIO buscado = new Usuarios().datos_usuario_cc(Decimal.Parse(TextBox3.Text));
         if (buscado != null)
         {
-
+            ASISTENCIA nuevo = new ASISTENCIA();
+            nuevo.id_restaurante= int.Parse(DropDownList1.SelectedValue);
+            nuevo.id_tipo= int.Parse(DDL_tipoComida.SelectedValue);
+            nuevo.id_usuario = buscado.Id_usuario;
+            nuevo.fecha = DateTime.Now;
+            new Usuarios().insertarAsistencia(nuevo);
+            Response.Write("<script>alert('ingresado con exito');window.location = 'administrador.aspx';</script>");
         }
         else
         {
@@ -116,13 +138,30 @@ public partial class vista_insertarAdmin : System.Web.UI.Page
         MENU nuevo = new MENU();
         nuevo.Dia = Calendar1.SelectedDate;
         nuevo.Menu = TextBox4.Text;
-        nuevo.Tipo_menu=int.Parse(DDL_tipoComida0.SelectedValue);
+        nuevo.id_Tipo=int.Parse(DDL_tipoComida0.SelectedValue);
         new Usuarios().insertarMenuAdmin(nuevo);
+        Response.Write("<script>alert('ingresado con exito');window.location = 'administrador.aspx';</script>");
 
     }
 
     protected void Button1_Click(object sender, EventArgs e)
     {
         //tipo menu
+        string nombre = TextBox5.Text;
+        TIPO nuevo = new TIPO();
+        nuevo.descripcion = nombre;
+        new Usuarios().insertarTipoMenu(nuevo);
+        Response.Write("<script>alert('ingresado con exito');window.location = 'administrador.aspx';</script>");
+
+    }
+
+    protected void Button8_Click(object sender, EventArgs e)
+    {
+        string nombre = TextBox6.Text;
+        RESTAURANTE nuevo = new RESTAURANTE();
+        nuevo.Nombre = nombre;
+        new Usuarios().insertarRestaurante(nuevo);
+        Response.Write("<script>alert('ingresado con exito');window.location = 'administrador.aspx';</script>");
+
     }
 }

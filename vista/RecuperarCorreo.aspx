@@ -6,10 +6,10 @@
     <p>
         Coreo Electronico</p>
     <p>
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server" Width="171px"></asp:TextBox>
     </p>
     <p>
-        <asp:Button ID="Button1" runat="server" Text="Recuperar contraseña" Width="202px" />
+        <asp:Button ID="Button1" runat="server" Text="Recuperar contraseña" Width="136px" />
     </p>
 </asp:Content>
 

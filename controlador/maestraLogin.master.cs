@@ -33,14 +33,12 @@ public partial class vista_maestraLogin : System.Web.UI.MasterPage
 
                 if (user.Id_rol == 1 && carga)
                 {
-                    Button3.Visible = false;
                     B_admin.Visible = true;
                     carga = false;
                     Response.Write("<script>alert('bienvenido administrador " + datos.Nombre + "');window.location = 'administrador.aspx';</script>");
                 }
                 if (user.Id_rol == 2 && carga)
                 {
-                    Button3.Visible = true;
                     B_admin.Visible = false;
                 }
             }

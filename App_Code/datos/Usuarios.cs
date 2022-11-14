@@ -6,6 +6,62 @@ using System.Web;
 
 public class Usuarios
 {
+    public void insertarRestaurante(RESTAURANTE nuevo)
+    {
+        using (var db = new WELFAREContext())
+        {
+            db.RESTAURANTEs.Add(nuevo);
+            db.SaveChanges();
+        }
+    }
+    public void insertarTipoMenu(TIPO nuevo)
+    {
+        using (var db = new WELFAREContext())
+        {
+            db.TIPOs.Add(nuevo);
+            db.SaveChanges();
+        }
+    }
+    public void insertarAsistencia(ASISTENCIA nuevo)
+    {
+        using (var db = new WELFAREContext())
+        {
+            db.ASISTENCIAs.Add(nuevo);
+            db.SaveChanges();
+        }
+    }
+    public void insertarRusuario(token Rtoken)
+    {
+        using (var db = new WELFAREContext())
+        {
+            db.TOKENs.Add(Rtoken);
+            db.SaveChanges();
+        }
+    }
+    public USUARIO contraseña(string usuario)
+    {
+        using (var db = new WELFAREContext())
+        {
+            USUARIO eusuario = db.USUARIOs.Where(u => u.Usuario == usuario).FirstOrDefault();
+            return eusuario;
+        }
+    }
+    public token token_id_us(string token)
+    {
+        using (var db = new WELFAREContext())
+        {
+            token tk = db.TOKENs.Where(u => u.tactivo == token).FirstOrDefault();
+            return tk;
+        }
+    }
+    public USUARIO id_us_usuario(int id)
+    {
+        using (var db = new WELFAREContext())
+        {
+            USUARIO eusuario = db.USUARIOs.Where(u => u.Id_usuario == id).FirstOrDefault();
+            return eusuario;
+        }
+    }
     public List<USUARIO> datos_usuarios()
     {
         List<USUARIO> usuarios;
@@ -16,6 +72,25 @@ public class Usuarios
         foreach (USUARIO user in usuarios)
         {
             user.Contraseña = DesEncriptar(user.Contraseña);
+        }
+        return usuarios;
+    }
+    //tipo menu
+    public List<TIPO> datos_tipoMenu()
+    {
+        List<TIPO> usuarios;
+        using (var db = new WELFAREContext())
+        {
+            usuarios = db.TIPOs.OrderBy(x => x.id_tipo).ToList();
+        }
+        return usuarios;
+    }
+    public List<ASISTENCIA> datos_Asistencia()
+    {
+        List<ASISTENCIA> usuarios;
+        using (var db = new WELFAREContext())
+        {
+            usuarios = db.ASISTENCIAs.OrderBy(x => x.id_asistencia).ToList();
         }
         return usuarios;
     }
