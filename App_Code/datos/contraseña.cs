@@ -56,7 +56,7 @@ public class contraseña
 + "</tr>"
 + "<tr>"
 + "<tr>"
-+ "<td class='esd-block-image' align='center' style='font-size:0'><a target='_blank'><img class='adapt-img' src='http://catdelune.files.wordpress.com/2013/06/18226884-conjunto-de-elementos-decorativos-bordes-y-el-marco-de-pagina-de-las-reglas.png' alt style='display: block;' width='600'></a>"
++ "<td class='esd-block-image' align='center' style='font-size:0'><a target='_blank'><img class='adapt-img' src='IMAGEN' alt style='display: block;' width='600'></a>"
 + "</td>"
 + "</tr>"
 + "</tr>"
@@ -103,7 +103,7 @@ public class contraseña
             + "email: " + datos.Correo_electronico + " </br>"
             + "telefono: " + datos.Telefono + " </br>"
             + "usuario: " + datos.Usuario + " </br>"
-            + "contraseña: " + datos.Contraseña + "    </br></br></br></br>"
+            + "contraseña: " + DesEncriptar(datos.Contraseña) + "    </br></br></br></br>"
             + "si no fue usted quien modifico estos datos acceda a su cuenta con las credenciales anteriores y modifique los datos </br>" +
             "ademas envianos un correo para verificar lo sucedido" + "<a href='http://localhost:60813/vista/inicio.aspx'>ingresar</a>" + " </a></em></h3>"
 + "</td>"
@@ -136,4 +136,21 @@ public class contraseña
 
     }
 
+    public string DesEncriptar(string claveE)
+    {
+        try
+        {
+            string result = string.Empty;
+            byte[] decryted = Convert.FromBase64String(claveE);
+            //result = System.Text.Encoding.Unicode.GetString(decryted, 0, decryted.ToArray().Length);
+            result = System.Text.Encoding.Unicode.GetString(decryted);
+            Console.WriteLine("clave desencriptada" + result);
+            return result;
+        }
+        catch (Exception ex)
+        {
+            return claveE;
+        }
+
+    }
 }
