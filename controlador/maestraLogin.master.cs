@@ -40,6 +40,7 @@ public partial class vista_maestraLogin : System.Web.UI.MasterPage
                 if (user.Id_rol == 2 && carga)
                 {
                     B_admin.Visible = false;
+
                 }
             }
         }

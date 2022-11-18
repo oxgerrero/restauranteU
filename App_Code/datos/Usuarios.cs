@@ -14,6 +14,60 @@ public class Usuarios
             db.SaveChanges();
         }
     }
+    public void insertarPago(PAGO nuevo)
+    {
+        using (var db = new WELFAREContext())
+        {
+            db.PAGOs.Add(nuevo);
+            db.SaveChanges();
+        }
+    }
+    public void eliminarUsuario(USUARIO nuevo)
+    {
+        using (var db = new WELFAREContext())
+        {
+            db.USUARIOs.Attach(nuevo);
+            db.USUARIOs.Remove(nuevo);
+            db.SaveChanges();
+        }
+    }
+    public void eliminarTipo(TIPO nuevo)
+    {
+        using (var db = new WELFAREContext())
+        {
+            db.TIPOs.Attach(nuevo);
+            db.TIPOs.Remove(nuevo);
+            db.SaveChanges();
+        }
+    }
+    public void eliminarRol(ROL nuevo)
+    {
+        using (var db = new WELFAREContext())
+        {
+            db.ROLs.Attach(nuevo);
+            db.ROLs.Remove(nuevo);
+            db.SaveChanges();
+        }
+    }
+    public void eliminarRestaurante(RESTAURANTE nuevo)
+    {
+        using (var db = new WELFAREContext())
+        {
+            db.RESTAURANTEs.Attach(nuevo);
+            db.RESTAURANTEs.Remove(nuevo);
+            db.SaveChanges();
+        }
+    }
+    public void eliminarMenu(MENU nuevo)
+    {
+        using (var db = new WELFAREContext())
+        {
+            db.MENUs.Attach(nuevo);
+            db.MENUs.Remove(nuevo);
+            db.SaveChanges();
+        }
+    }
+
     public void insertarTipoMenu(TIPO nuevo)
     {
         using (var db = new WELFAREContext())
@@ -75,6 +129,7 @@ public class Usuarios
         }
         return usuarios;
     }
+
     //tipo menu
     public List<TIPO> datos_tipoMenu()
     {
@@ -107,6 +162,84 @@ public class Usuarios
         }
         return usuarios;
     }
+    public List<asistenciaMostrar> datos_AsistenciaUser(string id)
+    {
+        int id_usuario = int.Parse(id);
+        int idRestaurante = 0;
+        int idTipo = 0;
+        List<ASISTENCIA> asistencias;
+        List<asistenciaMostrar> final= new List<asistenciaMostrar>();
+        using (var db = new WELFAREContext())
+        {
+            asistencias = db.ASISTENCIAs.Where(x=>x.id_usuario==id_usuario).OrderBy(x => x.id_asistencia).ToList();
+        }
+        foreach (ASISTENCIA asistencia in asistencias)
+        {
+            idRestaurante = asistencia.id_restaurante;
+            idTipo = asistencia.id_tipo;
+            RESTAURANTE restaurantes;
+            using (var db = new WELFAREContext())
+            {
+                restaurantes = db.RESTAURANTEs.Where(x => x.Id_restaurante == idRestaurante).OrderBy(x => x.Id_restaurante).FirstOrDefault();
+            }
+            asistenciaMostrar nuevo = new asistenciaMostrar();
+            TIPO tipo;
+            using (var db = new WELFAREContext())
+            {
+                tipo = db.TIPOs.Where(x => x.id_tipo == idTipo).OrderBy(x => x.id_tipo).FirstOrDefault();
+            }
+            nuevo.nombreRestaurante = restaurantes.Nombre;
+            nuevo.tipoAsistencia = tipo.descripcion;
+            nuevo.fechaAsistencia = asistencia.fecha;
+            final.Add(nuevo);
+        }
+        return final;
+    }
+
+    public List<pagosMostrar> datos_PagosUser(string id)
+    {
+        int id_usuario = int.Parse(id);
+        List<PAGO> pagos;
+        List<pagosMostrar> final = new List<pagosMostrar>();
+        using (var db = new WELFAREContext())
+        {
+            pagos = db.PAGOs.Where(x => x.Id_estudiante == id_usuario).OrderBy(x => x.Id_pago).ToList();
+        }
+        foreach (PAGO pago in pagos)
+        {
+            pagosMostrar nuevo = new pagosMostrar();
+            nuevo.fecha = pago.Fechas;
+            nuevo.pagado = int.Parse(pago.Cantidad+"");
+            nuevo.saldo = Decimal.Parse(pago.Saldo+"");
+            final.Add(nuevo);
+        }
+        return final;
+    }
+
+    public List<menuMostrar> datos_MenuUser()
+    {
+        List<MENU> menus;
+        List<menuMostrar> final = new List<menuMostrar>();
+        using (var db = new WELFAREContext())
+        {
+            menus = db.MENUs.OrderBy(x => x.Id_menu).ToList();
+        }
+        foreach (MENU menu in menus)
+        {
+            menuMostrar nuevo = new menuMostrar();
+            nuevo.fecha = menu.Dia;
+            nuevo.menu = menu.Menu;
+            TIPO tipo = new TIPO();
+            using (var db = new WELFAREContext())
+            {
+                tipo = db.TIPOs.Where(x=> x.id_tipo==menu.id_Tipo).OrderBy(x => x.id_tipo).FirstOrDefault();
+            }
+            nuevo.tipo = tipo.descripcion;
+            final.Add(nuevo);
+        }
+        return final;
+    }
+
     public List<ESTADO> datos_estadosAdmin()
     {
         List<ESTADO> estados;
@@ -224,6 +357,16 @@ public class Usuarios
         {
             db.USUARIOs.Attach(usuario);
             var entry = db.Entry(usuario);
+            entry.State = EntityState.Modified;
+            db.SaveChanges();
+        }
+    }
+    public void Ac_Pagos(PAGO pago)
+    {
+        using (var db = new WELFAREContext())
+        {
+            db.PAGOs.Attach(pago);
+            var entry = db.Entry(pago);
             entry.State = EntityState.Modified;
             db.SaveChanges();
         }

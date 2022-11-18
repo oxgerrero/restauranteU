@@ -18,6 +18,7 @@ public partial class vista_insertarAdmin : System.Web.UI.Page
             P_estado.Visible = false;
             P_tipoMenu.Visible = false;
             Panel1.Visible = false;
+            P_insertarPagos.Visible = false;
         }
         if (opcion.Equals("estado")){
             P_usuario.Visible = false;
@@ -27,6 +28,7 @@ public partial class vista_insertarAdmin : System.Web.UI.Page
             P_estado.Visible = true;
             Panel1.Visible = false;
             P_tipoMenu.Visible = false;
+            P_insertarPagos.Visible = false;
         }
         if (opcion.Equals("rol"))
         {
@@ -37,6 +39,7 @@ public partial class vista_insertarAdmin : System.Web.UI.Page
             P_estado.Visible = false;
             Panel1.Visible = false;
             P_tipoMenu.Visible = false;
+            P_insertarPagos.Visible = false;
         }
         if (opcion.Equals("restaurante"))
         {
@@ -47,6 +50,7 @@ public partial class vista_insertarAdmin : System.Web.UI.Page
             P_menu.Visible = false;
             P_estado.Visible = false;
             P_tipoMenu.Visible = false;
+            P_insertarPagos.Visible = false;
         }
         if (opcion.Equals("menu"))
         {
@@ -56,6 +60,7 @@ public partial class vista_insertarAdmin : System.Web.UI.Page
             P_Asistencia.Visible = false;
             P_menu.Visible = true;
             P_estado.Visible = false;
+            P_insertarPagos.Visible = false;
             P_tipoMenu.Visible = false;
         }
         if (opcion.Equals("tipoMenu"))
@@ -65,6 +70,7 @@ public partial class vista_insertarAdmin : System.Web.UI.Page
             P_Asistencia.Visible = false;
             Panel1.Visible = false;
             P_menu.Visible = false;
+            P_insertarPagos.Visible = false;
             P_estado.Visible = false;
             P_tipoMenu.Visible = true;
         }
@@ -75,6 +81,18 @@ public partial class vista_insertarAdmin : System.Web.UI.Page
             Panel1.Visible = false;
             P_Asistencia.Visible = true;
             P_menu.Visible = false;
+            P_insertarPagos.Visible = false;
+            P_estado.Visible = false;
+            P_tipoMenu.Visible = false;
+        }
+        if (opcion.Equals("pagos"))
+        {
+            P_usuario.Visible = false;
+            P_rol.Visible = false;
+            Panel1.Visible = false;
+            P_Asistencia.Visible = false;
+            P_menu.Visible = false;
+            P_insertarPagos.Visible = true;
             P_estado.Visible = false;
             P_tipoMenu.Visible = false;
         }
@@ -148,8 +166,10 @@ public partial class vista_insertarAdmin : System.Web.UI.Page
     {
         //tipo menu
         string nombre = TextBox5.Text;
+        int costo = int.Parse(TextBox7.Text);
         TIPO nuevo = new TIPO();
         nuevo.descripcion = nombre;
+        nuevo.costo = costo;
         new Usuarios().insertarTipoMenu(nuevo);
         Response.Write("<script>alert('ingresado con exito');window.location = 'administrador.aspx';</script>");
 
@@ -163,5 +183,24 @@ public partial class vista_insertarAdmin : System.Web.UI.Page
         new Usuarios().insertarRestaurante(nuevo);
         Response.Write("<script>alert('ingresado con exito');window.location = 'administrador.aspx';</script>");
 
+    }
+
+    protected void Button9_Click(object sender, EventArgs e)
+    {
+        string identificacion = TextBox8.Text;
+        string pagado = TextBox9.Text;
+        int id_estado = int.Parse(DropDownList2.SelectedValue);
+        string saldo = TextBox10.Text;
+        string concepto = TextBox11.Text;
+        PAGO nuevo = new PAGO();
+        USUARIO user = new Usuarios().datos_usuario_cc(decimal.Parse(identificacion));
+        nuevo.Id_estudiante = user.Id_usuario;
+        nuevo.Id_estado = id_estado;
+        nuevo.Saldo = int.Parse(saldo);
+        nuevo.Fechas = new DateTime();
+        nuevo.Concepto = concepto;
+        nuevo.Cantidad = decimal.Parse(pagado);
+        new Usuarios().insertarPago(nuevo);
+        Response.Write("<script>alert('ingresado con exito');window.location = 'administrador.aspx';</script>");
     }
 }

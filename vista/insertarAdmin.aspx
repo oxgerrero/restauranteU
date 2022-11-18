@@ -83,6 +83,9 @@
         Tipo&nbsp;&nbsp;&nbsp;&nbsp; 
         <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
         <br />
+        Costo&nbsp;&nbsp;
+        <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+        <br />
         <br />
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Insertar" />
     </asp:Panel>
@@ -106,6 +109,24 @@
         <br />
         <asp:Button ID="Button7" runat="server" OnClick="Button7_Click" Text="Insertar" />
         <br />
+    </asp:Panel>
+    <asp:Panel ID="P_insertarPagos" runat="server">
+        Pagos<br /> Identificacion<asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
+        <br />
+        Valor pagado
+        <asp:TextBox ID="TextBox9" runat="server"></asp:TextBox>
+        <br />
+        Estado&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="ODS_estadosAdmin" DataTextField="Nombre" DataValueField="Id_estado">
+        </asp:DropDownList>
+        <br />
+        Saldo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="TextBox10" runat="server"></asp:TextBox>
+        <br />
+        Concepto&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="TextBox11" runat="server"></asp:TextBox>
+        <br />
+        <asp:Button ID="Button9" runat="server" OnClick="Button9_Click" Text="Insertar" />
     </asp:Panel>
     <br />
     <asp:Panel ID="Panel1" runat="server">

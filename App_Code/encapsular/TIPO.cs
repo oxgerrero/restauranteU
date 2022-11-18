@@ -11,6 +11,7 @@ public class TIPO
     [Key]
     public int id_tipo { get; set; }
     public string descripcion { get; set; }
+    public int costo { get; set; }
 
     public ICollection<ASISTENCIA> ASISTENCIAs { get; set; }
     public ICollection<MENU> MENUs { get; set; }

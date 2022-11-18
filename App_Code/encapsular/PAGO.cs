@@ -14,11 +14,11 @@ public class PAGO
     [ForeignKey("USUARIO")]
     public int Id_estudiante { get; set; }
     public DateTime Fechas { get; set; }
-    public double Cantidad { get; set; }
+    public decimal Cantidad { get; set; }
 
     [ForeignKey("ESTADO")]
     public int Id_estado { get; set; }
-    public String Saldo { get; set; }
+    public Decimal Saldo { get; set; }
     public string Concepto { get; set; }
 
 

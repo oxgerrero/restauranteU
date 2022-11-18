@@ -20,6 +20,7 @@ public partial class vista_login : System.Web.UI.Page
             if (user.Id_estado == 1)
             {
                 Session["usuario"] = user;
+                Session["IDUSER"] = user.Id_usuario;
                 Response.Redirect("inicioLogin.aspx");
             }
             else
@@ -29,6 +30,7 @@ public partial class vista_login : System.Web.UI.Page
                 TB_password.Text = "";
                 TB_username.Text = "";
                 Session["usuario"] = null;
+                Session["IDUSER"] = null;
             }
         }
         else
