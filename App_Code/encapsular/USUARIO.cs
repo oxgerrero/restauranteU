@@ -25,7 +25,6 @@ public class USUARIO
     public ESTADO ESTADO { get; set; }
 
     //tablas donde existe referencia
-    public ICollection<RESTAURANTE> RESTAURANTEs { get; set; }
     public ICollection<token> tokens { get; set; }
     public ICollection<PAGO> PAGOs { get; set; }
     public ICollection<ASISTENCIA> ASISTENCIAs { get; set; }

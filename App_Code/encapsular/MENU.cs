@@ -17,5 +17,4 @@ public class MENU
 
     public TIPO TIPO { get; set; }
 
-    public ICollection<RESTAURANTE> RESTAURANTEs { get; set; }
 }

@@ -5,7 +5,7 @@ using System.Web;
 
 public class pagosMostrar
 {
-    public DateTime fecha { get; set; }
+    public string fecha { get; set; }
     public int pagado { get; set; }
     public Decimal saldo { get; set; }
 

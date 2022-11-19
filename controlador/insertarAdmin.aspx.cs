@@ -197,7 +197,7 @@ public partial class vista_insertarAdmin : System.Web.UI.Page
         nuevo.Id_estudiante = user.Id_usuario;
         nuevo.Id_estado = id_estado;
         nuevo.Saldo = int.Parse(saldo);
-        nuevo.Fechas = new DateTime();
+        nuevo.Fechas = (DateTime.Now).ToString();
         nuevo.Concepto = concepto;
         nuevo.Cantidad = decimal.Parse(pagado);
         new Usuarios().insertarPago(nuevo);

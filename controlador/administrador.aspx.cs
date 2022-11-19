@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -68,8 +69,7 @@ public partial class vista_administrador : System.Web.UI.Page
         {
             if (e.Row.FindControl("LB_Editar") != null)
             {
-
-                ((Label)e.Row.FindControl("label4")).Text = pago.Fechas.ToString("yyyy-MM-dd");
+                //((Label)e.Row.FindControl("label4")).Text = pago.Fechas.ToString("dd-MM-AAAA-HH:mm");
             }
         }
     }
@@ -79,13 +79,12 @@ public partial class vista_administrador : System.Web.UI.Page
         PAGO pago = new PAGO();
         pago.Id_pago = int.Parse(e.NewValues[0].ToString());
         pago.Id_estudiante = int.Parse(e.NewValues[1].ToString());
-        pago.Fechas = DateTime.Parse(e.NewValues[2].ToString());
-        pago.Fechas=Convert.ToDateTime(pago.Fechas);
+        pago.Fechas = (e.NewValues[2].ToString());
+        pago.Fechas=(pago.Fechas);
         pago.Cantidad = int.Parse((string)e.NewValues[3]);
         pago.Id_estado = int.Parse((String)e.NewValues[4]);
         pago.Saldo = Decimal.Parse((String)e.NewValues[5]);
         pago.Concepto = (String)e.NewValues[6];
-        //Convert.ToDateTime(catalogo.Anio);
     }
 
     protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -112,4 +111,5 @@ public partial class vista_administrador : System.Web.UI.Page
             }
         }
     }
+
 }

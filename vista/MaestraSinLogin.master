@@ -19,7 +19,7 @@
         <div></div>
         <div>
             MENU
-            <a href="login.aspx">Iniciar session</a>
+            <a href="login.aspx">Iniciar sesion</a>
             <a href="registro.aspx">Registrarse</a>
             <br />
             <br />
